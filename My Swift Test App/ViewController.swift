@@ -8,7 +8,10 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
+    @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var button: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,5 +24,16 @@ class ViewController: UIViewController {
     }
 
 
+    @IBAction func buttonPressed(sender: AnyObject) {
+        if self.textField.text != ""
+        {
+            self.label.text = self.textField.text
+        }
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.textField.resignFirstResponder()
+        return true
+    }
 }
 
